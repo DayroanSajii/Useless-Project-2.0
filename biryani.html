@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Onam Sadya Warning</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f9eb6d;
+        font-family: 'Noto Sans Malayalam', sans-serif;
+        position: relative;
+      }
+
+      .message {
+        font-size: 24px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        z-index: 10;
+        position: absolute;
+        text-align: center;
+        max-width: 90%;
+      }
+
+      .sadya-img {
+        position: absolute;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        pointer-events: none;
+        animation: float 2s linear forwards;
+      }
+
+      @keyframes float {
+        from { transform: translateY(0); opacity: 1; }
+        to   { transform: translateY(100vh); opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message" id="msg">
+      ആരെടാ ഓണത്തിന് ബിരിയാണി കഴിക്കുന്നെ . പോയി സദ്യ കഴിക്കെടാ.....
+    </div>
+
+    <script>
+      // Start image spam after 1 second, but keep the message visible
+      setTimeout(() => {
+        const sadyaImgUrl = 'sadhya.png';
+
+        setInterval(() => {
+          const img = document.createElement('img');
+          img.src = sadyaImgUrl;
+          img.className = 'sadya-img';
+
+          img.style.left = Math.random() * (window.innerWidth - 120) + 'px';
+          img.style.top = '-150px';
+
+          document.body.appendChild(img);
+
+          setTimeout(() => img.remove(), 5000);
+        }, 100); // per second
+      }, 1000); // Delay before spam starts
+    </script>
+  </body>
+</html>

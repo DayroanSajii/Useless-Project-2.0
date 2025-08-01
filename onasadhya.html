@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Onam Sadhya Selection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam&family=Gloock&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Serif Malayalam', serif;
+      background: #fff8dc;
+      padding: 40px;
+      text-align: center;
+      color: #4b2e00;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/33/Onam_pookkalam.jpg'), url('https://upload.wikimedia.org/wikipedia/commons/1/12/Onam_Sadhya.jpg');
+      background-size: 45% auto, cover;
+      background-position: left bottom, center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      filter: brightness(0.7);
+      z-index: -2;
+      animation: bgPulse 10s infinite ease-in-out;
+    }
+
+    @keyframes bgPulse {
+      0%, 100% { filter: brightness(0.7); }
+      50% { filter: brightness(1); }
+    }
+
+    h1 {
+      font-family: 'Gloock', serif;
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #7c3a00;
+      text-shadow: 1px 1px #fff8dc;
+    }
+
+    .curry-item {
+      background: rgba(255, 255, 240, 0.95);
+      border: 2px solid #d4a055;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    .curry-item.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .scold {
+      color: #c00000;
+      font-weight: bold;
+      display: none;
+      margin-top: 12px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 30px;
+      font-size: 18px;
+      font-family: 'Gloock', serif;
+      background-color: #f4c542;
+      border: none;
+      border-radius: 8px;
+      color: #4b2e00;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      box-shadow: 2px 2px 4px #cba656;
+    }
+
+    button:hover {
+      background-color: #e3af1c;
+      transform: scale(1.05);
+    }
+
+    #rice-section {
+      background: rgba(255, 255, 240, 0.95);
+      border: 2px solid #d4a055;
+      border-radius: 12px;
+      padding: 30px;
+      margin-top: 40px;
+      width: 80%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    video {
+      margin-top: 30px;
+      width: 80%;
+      max-width: 600px;
+      display: none;
+      border: 3px solid #d4a055;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <video id="rice-video" controls style="display:none;">
+  <source id="video-source" src="" type="video/mp4">
+</video>
+<script>
+function playRiceVideo(level) {
+  const video = document.getElementById('rice-video');
+  const source = document.getElementById('video-source');
+
+  if (level === 'low') {
+    source.src = 'kurch_rice.mp4'; // replace with real link or path
+  } else if (level === 'medium') {
+    source.src = 'kurch_koodi_rice.mp4';
+  } else if (level === 'high') {
+    source.src = 'kurch_kooduthal_rice.mp4';
+  }
+
+  video.load();
+  video.style.display = 'block';
+  video.play();
+}
+</script>
+
+
+</head>
+<body>
+  <h1>For better experience, choose 'No' for every option </h1>
+
+  <div id="curry-container">
+    <div class="curry-item" data-index="0">
+      <h3>Sambar വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">മറയാത്തേക്കു  സാംബാർ കഴിക്കട നായെ </div>
+    </div>
+    <div class="curry-item disabled" data-index="1">
+      <h3>Rasam വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">എടാ തെണ്ടി രസം ഇല്ലാണ്ടെ എങ്ങനെയാടാ സധ്യ കഴിക്കുന്നേ </div>
+    </div>
+    <div class="curry-item disabled" data-index="2">
+      <h3>Avial വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">എടാ നാണo ഇല്ലാത്ത കഴുത  മരിയതെക്കു കഴിച്ചൊ   </div>
+    </div>
+    <div class="curry-item disabled" data-index="3">
+      <h3>Kaalan വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold"> പോയി ചാവ് </div>
+    </div>
+    <div class="curry-item disabled" data-index="4">
+      <h3>Olan വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">നാണകേട് തന്നെ </div>
+    </div>
+    <div class="curry-item disabled" data-index="5">
+      <h3>Thoran വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">തോരൻ കൂട്ടാത്ത പട്ടി ,കൂട്ടിക്കൊ മരിയത്തേക്ക് </div>
+    </div>
+    <div class="curry-item disabled" data-index="6">
+      <h3>Pachadi വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">പച്ചടി ഇല്ലാണ്ടെ എനഗ്നെയാടാ നീ സധ്യ കഴിക്കുന്നേ </div>
+    </div>
+    <div class="curry-item disabled" data-index="7">
+      <h3>Kichadi വേണോ?</h3>
+      <button onclick="handleYes(this)">വേണം (Yes)</button>
+      <button onclick="handleNo(this)">വേണ്ട (No)</button>
+      <div class="scold">എടാ ഇറങ്ങി പോടാ </div>
+    </div>
+  </div>
+
+  <div id="rice-section" style="display:none;">
+    <h2>അവസാനം എത്ര  ചോറ് വേണം </h2>
+    <button onclick="playRiceVideo('low')">കുറച്ചു ചോറ് </button>
+    <button onclick="playRiceVideo('medium')">കുറച്ചു കൂടി  ചോറ് </button>
+    <button onclick="playRiceVideo('high')">കുറച്ചു കൂടുതൽ  ചോറ് </button>
+  </div>
+
+  <video id="rice-video" controls>
+    <source id="video-source" src="" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    function handleYes(button) {
+      const currentItem = button.closest('.curry-item');
+      currentItem.classList.add('disabled');
+      const nextIndex = parseInt(currentItem.dataset.index) + 1;
+      const nextItem = document.querySelector(`.curry-item[data-index="${nextIndex}"]`);
+      if (nextItem) {
+        nextItem.classList.remove('disabled');
+        nextItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        document.getElementById('rice-section').style.display = 'block';
+        document.getElementById('rice-section').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function handleNo(button) {
+      const item = button.closest('.curry-item');
+      const scold = item.querySelector('.scold');
+      scold.style.display = 'block';
+    }
+
+    function playRiceVideo(level) {
+      const video = document.getElementById('rice-video');
+      const source = document.getElementById('video-source');
+
+      if (level === 'low') {
+        source.src = 'kurchchorr.mp4';
+      } else if (level === 'medium') {
+        source.src = 'kurchkoodichor.mp4';
+      } else if (level === 'high') {
+        source.src = 'kurchkooduthalchor.mp4';
+      }
+
+      video.load();
+      video.style.display = 'block';
+      video.scrollIntoView({ behavior: 'smooth' });
+      video.play();
+    }
+  </script>
+</body>
+</html>

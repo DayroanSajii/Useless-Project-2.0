@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with Ammachi</title>
+  <style>
+    body {
+      background-color: #f4f0e0;
+      font-family: 'Noto Serif Malayalam', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #chat-container {
+      background-color: #fffaf0;
+      border: 2px solid #c2b280;
+      border-radius: 10px;
+      width: 500px;
+      padding: 20px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+    #chat-box {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #e0d4b7;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #fffff9;
+    }
+    .message {
+      margin-bottom: 10px;
+    }
+    .ammachi {
+      color: #7b4f28;
+      font-weight: bold;
+    }
+    .user {
+      color: #004d40;
+      margin-left: 20px;
+    }
+    #buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #ffe4b5;
+      border: 1px solid #d2b48c;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #ffdead;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <div id="chat-box">
+      <div class="message ammachi">ജോലിയൊന്നും ആയില്ലേ മോനേ ...?</div>
+    </div>
+    <div id="buttons">
+      <button onclick="handleResponse('yes')">Yes</button>
+      <button onclick="handleResponse('no')">No</button>
+    </div>
+  </div>
+
+  <script>
+    const dialogue = [
+      { question: "ജോലിയൊന്നും ആയില്ലേ മോനേ...", yes: "പിന്നെ വീട്ടിൽ നിന്ന് എന്താ തല്ല്...", no: "അതെങ്ങനെയാ, പഠിക്കാൻ വിട്ടപ്പോൾ മര്യാദക്ക് പഠിക്കണമായിരുന്നു..!"},
+      { question: "കല്യാണം ഒന്നും ആയില്ലേ മോനെ..?", yes: "ഓഹോ അതുശരി ...", no: "അത് ശെരിക്കും കാര്യം ആയില്ല..എൻെറ കാലത്തൊക്കെ  20 വയസ്സിന് കല്യാണം ആയി..." },
+      { question: "കുട്ടിയും ഇല്ല ഒരു പ്ലാൻ ഉം ഇല്ല അല്ലേ..?", yes: "കാലം പോയൊരു പോക്കേ..!", no: "നിന്റെ അപ്പന്റെ മുത്തശ്ശൻ  ഒന്നും ഇത്രയും  കാത്തിരുന്നില്ല..!" },
+      { question: "തോട്ടം ഒക്കെ നോക്കാറുണ്ടല്ലോ അല്ലേ..?", yes: "വളരേ നന്നായി...എന്നാൽ മുത്തശ്ശി വരുമ്പോൾ ചക്കക്കുരു കറി ഉണ്ടാക്കിക്കോ..!", no: "നിന്റെ പ്രായത്തിൽ ഞാൻ ഒക്കെ സ്വന്തമായി എല്ലാം ഉണ്ടാക്കുമായിരുന്നു..." },
+      { question: "നിന്റെ കയ്യിൽ ക്യാഷ് ഒക്കെ ഉണ്ടല്ലോ..?", yes: "അത് കേൾക്കുമ്പോ ഞാൻ സ്വർഗത്തിൽ എത്തിയ പോലെ തോന്നുന്നു ..!", no: "ഇവിടെ കാലം പോകുന്നതുപോലെ ക്യാഷും പോകുന്നു ,പോയി വല്ല പണിക്കും പോ മോനേ..!" },
+    ];
+
+    let index = 0;
+
+    function handleResponse(response) {
+      const chatBox = document.getElementById('chat-box');
+      const userReply = document.createElement('div');
+      userReply.className = 'message user';
+      userReply.innerText = response === 'yes' ? 'Yes' : 'No';
+      chatBox.appendChild(userReply);
+
+      const ammachiReply = document.createElement('div');
+      ammachiReply.className = 'message ammachi';
+      ammachiReply.innerText = dialogue[index][response];
+      chatBox.appendChild(ammachiReply);
+
+      index++;
+      if (index < dialogue.length) {
+        const nextQuestion = document.createElement('div');
+        nextQuestion.className = 'message ammachi';
+        nextQuestion.innerText = dialogue[index].question;
+        chatBox.appendChild(nextQuestion);
+      } else {
+        const endMessage = document.createElement('div');
+        endMessage.className = 'message ammachi';
+        endMessage.innerText = "എന്നാൽ ശരി... ഞാൻ വീട്ടിൽ പോയിട്ട് വരട്ടെ..!";
+        chatBox.appendChild(endMessage);
+        document.getElementById('buttons').style.display = 'none';
+      }
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>

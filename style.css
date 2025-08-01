@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #ff8c00; /* Orange background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top */
+  min-height: 100vh;
+  padding: 20px; /* Add some padding around the whole page */
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px; /* Max width for the content */
+  gap: 20px; /* Space between sections A and main-content */
+}
+
+/* Section A: Main Heading */
+.section-a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section-a h1 {
+  color: white;
+  font-size: 3em; /* Large font size */
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+/* Main Content: Below A, vertically divided into B and C */
+.main-content {
+  display: flex;
+  flex-direction: column; /* Default to column for smaller screens */
+  gap: 20px; /* Space between B and C */
+  flex-grow: 1;
+}
+
+/* Section B: Left part (D and E) */
+.section-b {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between D and E */
+  flex-grow: 1;
+}
+
+/* Section D: Question */
+.section-d {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.section-d h2 {
+  color: white;
+  font-size: 1.8em; /* Smaller than H1 */
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Section E: Biryani, or, Sadhya */
+.section-e {
+  display: flex;
+  flex-direction: column; /* Default to column for smaller screens */
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between items in E */
+  flex-grow: 1;
+}
+
+.or-text {
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Section C: Aunty Image Button */
+.section-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.button-link {
+  display: block; /* Make the link a block to contain the image */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  max-width: 300px; /* Max width for image buttons */
+  width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+.button-link:hover {
+  transform: scale(1.05);
+}
+
+.button-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure images cover their area */
+  border-radius: 8px; /* Match parent border-radius */
+}
+
+/* Specific height for aunty image to match visual */
+.section-c .button-link img {
+  max-height: 400px; /* Adjust as needed for visual balance */
+  object-fit: contain; /* Ensure aunty image is fully visible */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .section-a h1 {
+    font-size: 4.5em; /* Larger on medium screens */
+  }
+  .section-d h2 {
+    font-size: 2.5em; /* Larger on medium screens */
+  }
+  .section-e {
+    flex-direction: row; /* Horizontal for medium screens */
+  }
+  .or-text {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-a h1 {
+    font-size: 5.5em; /* Even larger on large screens */
+  }
+  .section-d h2 {
+    font-size: 3em; /* Even larger on large screens */
+  }
+  .main-content {
+    flex-direction: row; /* Horizontal for large screens */
+  }
+  .section-b {
+    flex: 2; /* B takes more space than C */
+  }
+  .section-c {
+    flex: 1; /* C takes less space */
+  }
+}
